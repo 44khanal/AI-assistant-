@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Customer Assistant — Voice Enabled</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="bg">
+      <div class="bg-gradient"></div>
+      <div class="bg-frost"></div>
+    </div>
+
+    <!-- GREETING STAGE -->
+    <section class="stage" id="stage" aria-hidden="false">
+      <div class="stage-inner">
+        <div class="bot-area">
+          <div class="orb-wrap" id="orbWrap">
+            <svg class="orb" viewBox="0 0 120 120">
+              <defs>
+                <radialGradient id="g1" cx="40%" cy="30%">
+                  <stop offset="0%" stop-color="#bfe9ff"/>
+                  <stop offset="45%" stop-color="#6fc7ff"/>
+                  <stop offset="100%" stop-color="#1e6bff"/>
+                </radialGradient>
+                <filter id="f1" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="8" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/></feMerge>
+                </filter>
+              </defs>
+              <circle cx="60" cy="60" r="34" fill="url(#g1)"></circle>
+              <g filter="url(#f1)">
+                <circle cx="60" cy="60" r="44" fill="url(#g1)" opacity="0.18"></circle>
+              </g>
+              <circle cx="44" cy="48" r="6" fill="rgba(255,255,255,0.95)" opacity="0.95"></circle>
+            </svg>
+          </div>
+          <div class="speech" id="speech">
+            <div class="line" id="line1"></div>
+            <div class="line muted" id="line2"></div>
+          </div>
+        </div>
+
+        <div class="language-puller" id="puller">
+          <div class="pull-handle" id="pullHandle">
+            <span class="handle-bar"></span>
+            <span class="handle-text">Choose your language</span>
+            <span class="handle-caret">▾</span>
+          </div>
+          <div class="lang-list" id="langList">
+            <button class="lang-btn" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="es">Español</button>
+            <button class="lang-btn" data-lang="ne">नेपाली</button>
+            <button class="lang-btn" data-lang="hi">हिन्दी</button>
+            <button class="lang-btn" data-lang="fr">Français</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAT STAGE -->
+    <section class="chat-stage" id="chatStage" aria-hidden="true">
+      <div class="chat-shell">
+        <header class="chat-header">
+          <div class="chat-header-left">
+            <div class="orb-small glowing"></div>
+            <div>
+              <div class="chat-title">AI Assistant</div>
+              <div class="chat-sub">Ready in <span id="selectedLangLabel">English</span></div>
+            </div>
+          </div>
+        </header>
+
+        <div class="chat-body" id="chatBody"></div>
+
+        <form id="chatForm" class="chat-input">
+          <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off" />
+          <button type="submit" class="send-btn">Send</button>
+          <button type="button" id="micBtn" title="Speak your question" class="mic-btn">🎤</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
